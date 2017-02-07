@@ -1,0 +1,17 @@
+/Users/Campbell/Ball Game/Temp/bin/Debug/UnityEngine.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/UnityEditor.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/Mono.Cecil.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/Unity.DataContract.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/Campbell/Ball Game/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/Campbell/Ball Game/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/Campbell/Ball Game/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/Campbell/Ball Game/obj/Debug/Assembly-CSharp.dll
+/Users/Campbell/Ball Game/obj/Debug/Assembly-CSharp.dll.mdb
