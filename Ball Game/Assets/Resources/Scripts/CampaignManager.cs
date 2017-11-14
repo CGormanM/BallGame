@@ -15,6 +15,11 @@ public class CampaignManager : MonoBehaviour {
 	Vector2 destination;
 	bool isMoving;
 
+	float timeCounter;
+	float width;
+	float height;
+	bool circularMovement;
+
 	int maxScore = 100;
 
 
@@ -26,7 +31,10 @@ public class CampaignManager : MonoBehaviour {
 
 	void Update(){
 		if (isMoving) 
-			target.transform.position = Vector2.MoveTowards (target.transform.position, destination, speed * Time.deltaTime);
+			if(circularMovement)
+				moveinCircle();
+			else
+				target.transform.position = Vector2.MoveTowards (target.transform.position, destination, speed * Time.deltaTime);
 		if (Vector2.Distance(target.transform.position, destination) == 0)
 			destination = randomPosition();
 	}
@@ -79,24 +87,23 @@ public class CampaignManager : MonoBehaviour {
 
 		case 6:
 			destination = randomPosition ();
+			speed = 1;
 			isMoving = true;
 			calculateMaxScore ();
 			break;
 
 		case 7:
-			destination = randomPosition ();
-			speed = 3;
+			width = 0.1f;
+			height = 0.1f;
 			isMoving = true;
+			circularMovement = true;
 			calculateMaxScore ();
 			break;
 
 		case 8:
-			coin = GameObject.Instantiate (Resources.Load ("prefabs/coin")) as GameObject;
-			coin.GetComponent<Coin> ().setPosition (randomXPos(), randomYPos(), 0f);
 			destination = randomPosition ();
-			speed = 3;
+			speed = 2;
 			isMoving = true;
-
 			calculateMaxScore ();
 			break;
 
@@ -104,7 +111,7 @@ public class CampaignManager : MonoBehaviour {
 			coin = GameObject.Instantiate (Resources.Load ("prefabs/coin")) as GameObject;
 			coin.GetComponent<Coin> ().setPosition (randomXPos(), randomYPos(), 0f);
 			destination = randomPosition ();
-			speed = 3;
+			speed = 2;
 			isMoving = true;
 
 			calculateMaxScore ();
@@ -124,7 +131,7 @@ public class CampaignManager : MonoBehaviour {
 		float distance = .23f;
 		RaycastHit2D hit = Physics2D.Raycast (target.transform.position, Vector2FromAngle (angle));
 
-		for (int i = 0; i <= ((hit.distance - .26f) / .1f); i++) {
+		for (int i = 0; i <= ((hit.distance - .26f) / .15f); i++) {
 			GameObject coin = GameObject.Instantiate (Resources.Load ("prefabs/coin")) as GameObject;
 			Vector2 Pos = new Vector2 (target.transform.position.x, target.transform.position.y) + Vector2FromAngle (angle) * distance;
 			coin.GetComponent<Coin> ().setPosition (Pos.x, Pos.y, 0f);
@@ -147,6 +154,15 @@ public class CampaignManager : MonoBehaviour {
 		coinList = GameObject.FindGameObjectsWithTag("Coin");
 		maxScore += 10 * coinList.Length;
 		Camera.main.GetComponent<ScoreKeeper> ().updateMaxScore (maxScore);
+	}
+
+	void moveinCircle(){
+		timeCounter += Time.deltaTime * speed;
+
+		float x = Mathf.Cos(timeCounter)*width;
+		float y = Mathf.Sin(timeCounter)*height;
+
+		target.transform.position = new Vector3 (x, y, 0f);
 	}
 
 	float randomYPos(){ return Random.Range (-2f, 2f); }
